@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .box {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="columns is-centered">
+            <div class="column is-two-fifths">
+                <div class="box">
+                    <h1 class="title is-4 mb-0">Create Account</h1>
+                    <p>Track and improve your finance with AI</p>
+
+                    <!-- Display flash message if username already exists -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                {% if category == 'error' %}
+                                    <div class="notification is-danger">
+                                        {{ message }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <!-- Form for sign-up -->
+                    <form action="/submit" method="POST" class="mt-4">
+                        <div class="control">
+                            <input class="input" type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="control mt-2">
+                            <input class="input" type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <button class="button is-primary is-fullwidth is-rounded mt-4">Create Account</button>
+                    </form>
+
+                    <p style="display: inline;">Already have an account?</p>
+                    <a href="/login" class="has-text-primary" style="display: inline;">Log in</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

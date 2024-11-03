@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .horizontal-divider {
+            height: 1px;
+            background-color: #ccc;
+            margin: 1.5rem 0;
+        }
+
+        .chart-box {
+            margin-bottom: 1.5rem; /* Add space between each chart */
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .navbar-item.expand {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <strong>Finance App</strong>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start is-flex is-justify-content-space-between" style="flex-grow: 1;">
+            <a href="/transfer" class="navbar-item expand">Transfer</a>
+            <a href="/trade" class="navbar-item expand">Trade</a>
+            <a href="/track" class="navbar-item expand">Track</a>
+        </div>
+
+        <div class="navbar-end">
+            <a href="/login" class="navbar-item">Log Out</a>
+        </div>
+    </div>
+</nav>
+
+<body>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Welcome to the dashboard for "{{ username }}"!</h1>
+
+            <!-- Top Section with Account Information -->
+            <div>
+                <h2 class="subtitle">Account Balance:</h2>
+                <p>Bank Balance: ${{ bank_balance }}</p>
+                <p>Investing Balance: ${{ investing_balance }}</p>
+                <a href="/accounts" class="is-small has-text-primary">View Account Details</a>
+            </div>
+
+            <!-- Horizontal Divider -->
+            <div class="horizontal-divider"></div>
+
+            <!-- Bottom Section with Charts -->
+            <div>
+                <h2 class="subtitle">Cumulative Balance Charts</h2>
+
+                <div class="chart-box box">
+                    <h3 class="chart-title">Weekly Balance</h3>
+                    {{ chart_week|safe }}
+                </div>
+                <div class="chart-box box">
+                    <h3 class="chart-title">Monthly Balance</h3>
+                    {{ chart_month|safe }}
+                </div>
+                <div class="chart-box box">
+                    <h3 class="chart-title">Yearly Balance</h3>
+                    {{ chart_year|safe }}
+                </div>
+                <div class="chart-box box">
+                    <h3 class="chart-title">5-Year Balance</h3>
+                    {{ chart_5years|safe }}
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p><strong>Workout Planner</strong> by Logan Tierney</p>
+    <p><strong>© Copyright 2024</strong></p>
+  </div>
+</footer>
+</html>

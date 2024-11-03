@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Cash Flow</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .navbar-item.expand {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <strong>Finance App</strong>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start is-flex is-justify-content-space-between" style="flex-grow: 1;">
+            <a href="/dashboard" class="navbar-item expand">Home</a>
+            <a href="/transfer" class="navbar-item expand">Transfer</a>
+            <a href="/trade" class="navbar-item expand">Trade</a>
+        </div>
+
+        <div class="navbar-end">
+            <a href="/login" class="navbar-item">Log Out</a>
+        </div>
+    </div>
+</nav>
+
+<body>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Track Cash Flow</h1>
+
+        <!-- Show bank and investing balances -->
+        <div class="box">
+            <h2 class="subtitle">Account Balances</h2>
+            <p><strong>Bank Balance:</strong> ${{ bank_balance }}</p>
+            <p><strong>Investing Balance:</strong> ${{ investing_balance }}</p>
+        </div>
+
+        <!-- Combined Cash Flow and Expense Form -->
+        <div class="box">
+            <h2 class="subtitle">Add New Transaction</h2>
+            <form action="/add_transaction" method="POST">
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <input class="input" type="text" name="description" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Amount</label>
+                    <div class="control">
+                        <input class="input" type="number" name="amount" step="0.01" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Period</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="period" required>
+                                <option value="Daily">Daily</option>
+                                <option value="Weekly">Weekly</option>
+                                <option value="Monthly">Monthly</option>
+                                <option value="Quarterly">Quarterly</option>
+                                <option value="Yearly">Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Type</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="type" required>
+                                <option value="Income">Income</option>
+                                <option value="Expense">Expense</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <button class="button is-primary" type="submit">Add Transaction</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Show Combined Cash Flows and Expenses -->
+        <div class="box">
+            <h2 class="subtitle">Cash Flows and Expenses</h2>
+            <table class="table is-fullwidth is-striped">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Period</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.description }}</td>
+                        <td>${{ "%.2f"|format(transaction.amount) }}</td>
+                        <td>{{ transaction.period }}</td>
+                        <td>{{ transaction.type }}</td>
+                        <td>
+                            <!-- Edit Button -->
+                            <a href="{{ url_for('edit_transaction_form', id=transaction['id']) }}" class="button is-small is-info">Edit</a>
+
+                            <!-- Delete Button -->
+                            <form action="{{ url_for('delete_transaction', id=transaction['id']) }}" method="POST" style="display: inline;">
+                                <button type="submit" class="button is-small is-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p><strong>Workout Planner</strong> by Logan Tierney</p>
+    <p><strong>© Copyright 2024</strong></p>
+  </div>
+</footer>
+</body>
+</html>

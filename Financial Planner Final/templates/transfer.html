@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        /* Center navbar items text and expand items */
+        .navbar-item.expand {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <strong>Finance App</strong>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start is-flex is-justify-content-space-between" style="flex-grow: 1;">
+            <a href="/dashboard" class="navbar-item expand">Home</a>
+            <a href="/trade" class="navbar-item expand">Trade</a>
+            <a href="/track" class="navbar-item expand">Track</a>
+        </div>
+
+        <div class="navbar-end">
+            <a href="/login" class="navbar-item">Log Out</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<section class="section">
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div>
+                    {% for category, message in messages %}
+                        {% if category == "transfer" %}
+                            <div class="notification is-danger">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <h1 class="title">Transfer Money</h1>
+        <p>Bank Balance: ${{ bank_balance }}</p>
+        <p>Investing Balance: ${{ investing_balance }}</p>
+        <form action="/transfer" method="POST">
+            <div class="field">
+                <label class="label">Transfer From</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="transfer_from" required>
+                            <option value="" disabled selected>Select an Account</option>
+                            <option value="Bank Account">Bank Account</option>
+                            <option value="Investing Account">Investing Account</option>
+                        </select>
+                    </div>
+                </div>
+                <label class="label">Transfer To</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="transfer_to" required>
+                            <option value="" disabled selected>Select an Account</option>
+                            <option value="Bank Account">Bank Account</option>
+                            <option value="Investing Account">Investing Account</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Amount</label>
+                <div class="control">
+                    <input class="input" type="number" name="amount" placeholder="Enter amount to transfer" min="0" required>
+                </div>
+            </div>
+            <button class="button is-primary" type="submit">Transfer</button>
+        </form>
+    </div>
+</section>
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p><strong>Workout Planner</strong> by Logan Tierney</p>
+    <p><strong>© Copyright 2024</strong></p>
+  </div>
+</footer>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Transaction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Edit Transaction</h1>
+            <form action="/update_transaction/{{ cash_flow.id }}" method="POST">
+                <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                        <input class="input" type="text" name="description" value="{{ cash_flow.description }}" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Amount</label>
+                    <div class="control">
+                        <input class="input" type="number" name="amount" step="0.01" value="{{ cash_flow.amount }}" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Period</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="period" required>
+                                <option value="Daily" {% if cash_flow.period == 'Daily' %}selected{% endif %}>Daily</option>
+                                <option value="Weekly" {% if cash_flow.period == 'Weekly' %}selected{% endif %}>Weekly</option>
+                                <option value="Monthly" {% if cash_flow.period == 'Monthly' %}selected{% endif %}>Monthly</option>
+                                <option value="Quarterly" {% if cash_flow.period == 'Quarterly' %}selected{% endif %}>Quarterly</option>
+                                <option value="Yearly" {% if cash_flow.period == 'Yearly' %}selected{% endif %}>Yearly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Type</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="type" required>
+                                <option value="Income" {% if cash_flow.type == 'Income' %}selected{% endif %}>Income</option>
+                                <option value="Expense" {% if cash_flow.type == 'Expense' %}selected{% endif %}>Expense</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" type="submit">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p><strong>Workout Planner</strong> by Logan Tierney</p>
+    <p><strong>© Copyright 2024</strong></p>
+  </div>
+</footer>
+</html>

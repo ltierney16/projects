@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prices</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .navbar-item.expand {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <strong>Finance App</strong>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start is-flex is-justify-content-space-between" style="flex-grow: 1;">
+            <a href="/dashboard" class="navbar-item expand">Home</a>
+            <a href="/transfer" class="navbar-item expand">Transfer</a>
+            <a href="/track" class="navbar-item expand">Track</a>
+        </div>
+
+        <div class="navbar-end">
+            <a href="/login" class="navbar-item">Log Out</a>
+        </div>
+    </div>
+</nav>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Stock Price Visualizer</h1>
+            <p class="subtitle has-text-centered">Enter a stock symbol and select options to see the stock chart</p>
+
+            <!-- Display error message if stock symbol is invalid -->
+            {% if error_message %}
+                <div class="notification is-danger has-text-centered">
+                    {{ error_message }}
+                </div>
+            {% endif %}
+
+            <!-- Form to input stock symbol and select period/interval -->
+            <div class="box">
+                <form method="POST">
+                    <div class="field">
+                        <label class="label">Stock Symbol</label>
+                        <div class="control">
+                            <input class="input" type="text" name="stock" placeholder="e.g., AAPL, TSLA, MSFT" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Period</label>
+                        <div class="control">
+                            <div class="select">
+                                <select name="period">
+                                    <option value="1d">1 day</option>
+                                    <option value="5d">5 days</option>
+                                    <option value="1mo">1 month</option>
+                                    <option value="3mo">3 months</option>
+                                    <option value="6mo">6 months</option>
+                                    <option value="1y">1 year</option>
+                                    <option value="5y">5 years</option>
+                                    <option value="max">Max</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Interval</label>
+                        <div class="control">
+                            <div class="select">
+                                <select name="interval">
+                                    <option value="1m">1 minute</option>
+                                    <option value="5m">5 minutes</option>
+                                    <option value="15m">15 minutes</option>
+                                    <option value="1h">1 hour</option>
+                                    <option value="1d">1 day</option>
+                                    <option value="1wk">1 week</option>
+                                    <option value="1mo">1 month</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field has-text-centered">
+                        <button class="button is-primary" type="submit">Show Stock Chart</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Display the stock chart -->
+            <div>
+                {% if plot_div %}
+                    {{ plot_div|safe }}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</body>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p><strong>Workout Planner</strong> by Logan Tierney</p>
+    <p><strong>© Copyright 2024</strong></p>
+  </div>
+</footer>
+</html>
