@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Cash Flow</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- styles for the nav bar -->
     <style>
         .navbar-item.expand {
             flex-grow: 1;
@@ -17,13 +19,17 @@
     </style>
 </head>
 
+<!-- nav bar -->
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+
+    <!-- first thing in nav bar -->
     <div class="navbar-brand">
         <a class="navbar-item">
             <strong>Finance App</strong>
         </a>
     </div>
 
+    <!-- routes to other parts of website in nav bar-->
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start is-flex is-justify-content-space-between" style="flex-grow: 1;">
             <a href="/dashboard" class="navbar-item expand">Home</a>
@@ -31,6 +37,7 @@
             <a href="/trade" class="navbar-item expand">Trade</a>
         </div>
 
+        <!-- option on nav bar to log out -->
         <div class="navbar-end">
             <a href="/login" class="navbar-item">Log Out</a>
         </div>
@@ -43,17 +50,19 @@
     <div class="container">
         <h1 class="title">Track Cash Flow</h1>
 
-        <!-- Show bank and investing balances -->
+        <!-- show bank and investing balances -->
         <div class="box">
             <h2 class="subtitle">Account Balances</h2>
             <p><strong>Bank Balance:</strong> ${{ bank_balance }}</p>
             <p><strong>Investing Balance:</strong> ${{ investing_balance }}</p>
         </div>
 
-        <!-- Combined Cash Flow and Expense Form -->
+        <!-- combined Cash Flow and Expense Form -->
         <div class="box">
             <h2 class="subtitle">Add New Transaction</h2>
             <form action="/add_transaction" method="POST">
+
+                <!-- option to label the cash flow -->
                 <div class="field">
                     <label class="label">Description</label>
                     <div class="control">
@@ -61,6 +70,7 @@
                     </div>
                 </div>
 
+                <!-- option to give amount for cash flow -->
                 <div class="field">
                     <label class="label">Amount</label>
                     <div class="control">
@@ -68,6 +78,7 @@
                     </div>
                 </div>
 
+                <!-- option to set frequency for cash flow -->
                 <div class="field">
                     <label class="label">Period</label>
                     <div class="control">
@@ -83,6 +94,7 @@
                     </div>
                 </div>
 
+                <!-- option to set cash flow as income/expense-->
                 <div class="field">
                     <label class="label">Type</label>
                     <div class="control">
@@ -95,13 +107,14 @@
                     </div>
                 </div>
 
+                <!-- button to submit -->
                 <div class="control">
                     <button class="button is-primary" type="submit">Add Transaction</button>
                 </div>
             </form>
         </div>
 
-        <!-- Show Combined Cash Flows and Expenses -->
+        <!-- show combined cash flows and expenses -->
         <div class="box">
             <h2 class="subtitle">Cash Flows and Expenses</h2>
             <table class="table is-fullwidth is-striped">
@@ -122,10 +135,10 @@
                         <td>{{ transaction.period }}</td>
                         <td>{{ transaction.type }}</td>
                         <td>
-                            <!-- Edit Button -->
+                            <!-- ddit Button -->
                             <a href="{{ url_for('edit_transaction_form', id=transaction['id']) }}" class="button is-small is-info">Edit</a>
 
-                            <!-- Delete Button -->
+                            <!-- delete Button -->
                             <form action="{{ url_for('delete_transaction', id=transaction['id']) }}" method="POST" style="display: inline;">
                                 <button type="submit" class="button is-small is-danger">Delete</button>
                             </form>
@@ -138,6 +151,8 @@
 
     </div>
 </section>
+
+<!-- footer for website -->
 <footer class="footer">
   <div class="content has-text-centered">
     <p><strong>Workout Planner</strong> by Logan Tierney</p>

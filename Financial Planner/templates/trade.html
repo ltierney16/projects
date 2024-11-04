@@ -6,6 +6,8 @@
     <title>Stock Prices</title>
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- styling for nav bar -->
     <style>
         .navbar-item.expand {
             flex-grow: 1;
@@ -18,6 +20,7 @@
     </style>
 </head>
 
+<!-- nav bar -->
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item">
@@ -44,14 +47,14 @@
             <h1 class="title has-text-centered">Stock Price Visualizer</h1>
             <p class="subtitle has-text-centered">Enter a stock symbol and select options to see the stock chart</p>
 
-            <!-- Display error message if stock symbol is invalid -->
+            <!-- display error message if stock symbol is invalid -->
             {% if error_message %}
                 <div class="notification is-danger has-text-centered">
                     {{ error_message }}
                 </div>
             {% endif %}
 
-            <!-- Form to input stock symbol and select period/interval -->
+            <!-- form to input stock symbol and select period/interval -->
             <div class="box">
                 <form method="POST">
                     <div class="field">
@@ -61,6 +64,7 @@
                         </div>
                     </div>
 
+                    <!-- option to select period of time shown on graph-->
                     <div class="field">
                         <label class="label">Period</label>
                         <div class="control">
@@ -79,6 +83,7 @@
                         </div>
                     </div>
 
+                    <!-- option to select interval of candlesticks-->
                     <div class="field">
                         <label class="label">Interval</label>
                         <div class="control">
@@ -96,13 +101,14 @@
                         </div>
                     </div>
 
+                    <!-- button to show stock chart -->
                     <div class="field has-text-centered">
                         <button class="button is-primary" type="submit">Show Stock Chart</button>
                     </div>
                 </form>
             </div>
 
-            <!-- Display the stock chart -->
+            <!-- display the stock chart -->
             <div>
                 {% if plot_div %}
                     {{ plot_div|safe }}
@@ -111,6 +117,8 @@
         </div>
     </section>
 </body>
+
+<!-- footer for website -->
 <footer class="footer">
   <div class="content has-text-centered">
     <p><strong>Workout Planner</strong> by Logan Tierney</p>

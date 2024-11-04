@@ -9,20 +9,28 @@
 <body>
     <section class="section">
         <div class="container">
+
+            <!-- form on edit transaction page -->
             <h1 class="title">Edit Transaction</h1>
             <form action="/update_transaction/{{ cash_flow.id }}" method="POST">
+
+                <!-- allows you to edit description-->
                 <div class="field">
                     <label class="label">Description</label>
                     <div class="control">
                         <input class="input" type="text" name="description" value="{{ cash_flow.description }}" required>
                     </div>
                 </div>
+
+                <!-- allows you to edit amount-->
                 <div class="field">
                     <label class="label">Amount</label>
                     <div class="control">
                         <input class="input" type="number" name="amount" step="0.01" value="{{ cash_flow.amount }}" required>
                     </div>
                 </div>
+
+                <!-- allows you to edit period -->
                 <div class="field">
                     <label class="label">Period</label>
                     <div class="control">
@@ -37,6 +45,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- allows you to change whether cash flow is a income/expense -->
                 <div class="field">
                     <label class="label">Type</label>
                     <div class="control">
@@ -55,6 +65,8 @@
         </div>
     </section>
 </body>
+
+<!-- footer for website -->
 <footer class="footer">
   <div class="content has-text-centered">
     <p><strong>Workout Planner</strong> by Logan Tierney</p>

@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transfer Money</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- navbar styling -->
     <style>
-        /* Center navbar items text and expand items */
         .navbar-item.expand {
             flex-grow: 1;
             display: flex;
@@ -19,6 +20,7 @@
 </head>
 <body>
 
+<!-- navbar styling -->
 <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item">
@@ -39,7 +41,6 @@
     </div>
 </nav>
 
-<!-- Main Content -->
 <section class="section">
     <div class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -56,10 +57,14 @@
             {% endif %}
         {% endwith %}
         <h1 class="title">Transfer Money</h1>
+
+        <!-- shows current users current bank and investing accounts balances -->
         <p>Bank Balance: ${{ bank_balance }}</p>
         <p>Investing Balance: ${{ investing_balance }}</p>
         <form action="/transfer" method="POST">
             <div class="field">
+
+                <!-- option to select which account transfering from -->
                 <label class="label">Transfer From</label>
                 <div class="control">
                     <div class="select">
@@ -70,6 +75,8 @@
                         </select>
                     </div>
                 </div>
+
+                <!-- option to select which account transfering to -->
                 <label class="label">Transfer To</label>
                 <div class="control">
                     <div class="select">
@@ -82,6 +89,7 @@
                 </div>
             </div>
 
+            <!-- option to select amount to transfer -->
             <div class="field">
                 <label class="label">Amount</label>
                 <div class="control">
@@ -93,6 +101,8 @@
     </div>
 </section>
 </body>
+
+<!-- footer for website -->
 <footer class="footer">
   <div class="content has-text-centered">
     <p><strong>Workout Planner</strong> by Logan Tierney</p>

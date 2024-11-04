@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+    <!-- styles for creating account box-->
     <style>
         .box {
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -13,12 +15,14 @@
 <body>
     <section class="section">
         <div class="columns is-centered">
+
+            <!-- makes create account form take up 2/5 of screen horizontally-->
             <div class="column is-two-fifths">
                 <div class="box">
                     <h1 class="title is-4 mb-0">Create Account</h1>
                     <p>Track and improve your finance with AI</p>
 
-                    <!-- Display flash message if username already exists -->
+                    <!-- display flash message if username already exists -->
                     {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
                             {% for category, message in messages %}
@@ -31,7 +35,7 @@
                         {% endif %}
                     {% endwith %}
 
-                    <!-- Form for sign-up -->
+                    <!-- form for sign-up -->
                     <form action="/submit" method="POST" class="mt-4">
                         <div class="control">
                             <input class="input" type="text" name="username" placeholder="Username" required>
