@@ -19,3 +19,12 @@ The proxy is installed on a CloudLab node that the client script targets. The pr
 I started this project in my networking class and was able to take a deep dive into how to manipulate transport layer packets.
 
 For this project, I used the Python modules socket and ssl, Flask, HTML (CSS and Bulma for styling), Wireshark for testing, CloudLab for server hosting, SSH for logging into sessions, and the command prompt for running commands.
+
+# Workouts Planner
+The Workouts Planner allows users to create an account, log in, browse workouts, generate personalized workout schedules while avoiding scheduling conflicts, and watch instructional workout videos for each exercise. The application also provides users with a personalized homepage to manage their fitness plans.
+
+I was responsible for developing the landing page and user homepage, implementing the workout scheduling system and conflict detection logic, integrating workout videos so they displayed on the appropriate workout pages, and contributing to the user authentication system.
+
+This project was developed over the course of eight weeks using the Agile development methodology. Our team gathered requirements, created user stories, and iteratively improved the application through multiple development sprints.
+
+For this project we used Flask, Python, HTML (CSS and Bulma for styling), SQLite for the database, Git and GitHub for version control, and followed the Agile software development process throughout the project.
