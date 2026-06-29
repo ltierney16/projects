@@ -28,3 +28,11 @@ I was responsible for developing the landing page and user homepage, implementin
 This project was developed over the course of eight weeks using the Agile development methodology. Our team gathered requirements, created user stories, and iteratively improved the application through multiple development sprints.
 
 For this project we used Flask, Python, HTML (CSS and Bulma for styling), SQLite for the database, Git and GitHub for version control, and followed the Agile software development process throughout the project.
+
+# Calculator
+
+The calculator allows a user to perform addition, subtraction, multiplication, division, and modulo operations, with full support for grouping expressions using parenthesis. It also features a built-in history tape that allows users to navigate back and review past calculations chronologically. When browsing through older calculations, the calculator display box shifts dynamically to a deep blue-gray color to clearly distinguish old logs from the active typing screen.
+
+I started this project to build a full-stack application that leverages a decoupled frontend and backend ecosystem while mastering asynchronous REST API integrations and state synchronization.
+
+For this project I used Spring Boot, Java, and Maven for the backend, Vite, React, JavaScript, and HTML (CSS for styling) for the frontend, and a SQL database for storing calculation history.
