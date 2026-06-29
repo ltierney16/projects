@@ -53,8 +53,3 @@ The dev server starts on `http://localhost:5173`.
 - The calculator UI runs entirely in the browser.
 - Each time you press `=`, the result is saved to the backend via `POST /api/history` and stored in MySQL.
 - Calculation history can be browsed using the up/down arrows next to the display, which step through past entries fetched via `GET /api/history`.
-
-## Notes
-
-- `application.properties` is gitignored since it contains your local database credentials — use `application.properties.example` as a template.
-- CORS on the backend is currently configured to only allow requests from `http://localhost:5173` (the default Vite dev server port).
