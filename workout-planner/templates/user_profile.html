@@ -1,0 +1,37 @@
+{% extends "layout_main.html" %}
+{% block body %}
+
+<head>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+  >
+
+    <div class="container is-max-tablet">
+  <div class="notification is-danger">
+
+<dl>
+    <dt class="title is-5">Profile Settings:
+     <dd><form action="{{ url_for('profile_redo_info') }}" method="post" class="profile_redo_info"><input class="button has-warning"  type="submit" value="Redo Profile Information"></form></dd>
+     <dd><form action="{{ url_for('change_password') }}" method="post" class="change_passwrd"><input class="button has-warning"  type="submit" value="Change Password"></form></dd>
+
+    <dt> <b>Username</b>:
+      <dd>{{ cur_user.username }}
+    <dt> <b>Email</b>:
+        <dd> {{cur_user.email}} </dd>
+    <dt> <b>Goal</b>:
+        <dd> {{goal_text}} </dd>
+    <dt> <b>Experience</b>:
+        <dd> {{cur_experience}} </dd>
+    <dt> <b>Body</b>:
+        <dd> {{cur_user.body}} </dd>
+    <dt> <b>Weight</b>:
+        <dd> {{cur_user.weight}} </dd>
+    <dt> <b>Height</b>:
+        <dd> {{cur_user.height}} </dd>
+</dl>
+  </div>
+</div>
+</head>
+
+{% endblock %}

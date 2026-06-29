@@ -1,0 +1,44 @@
+{% extends "layout_main.html" %}
+{% block body %}
+
+<div class="container">
+    <div class="section">
+        <h1 class="title">Weekly Workout Schedule</h1>
+        <table class="table is-fullwidth is-striped is-bordered">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Recommended Workout Time</th>
+                    <th>Current Schedule</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for day, rec_time, conflicts in week_schedule %}
+            <tr{% if rec_time %} class="is-selected"{% endif %}>
+                <td>{{ day }}</td>
+                <td>
+                    {% if rec_time %}
+                        {{ rec_time }}
+                    {% else %}
+                        No workout scheduled
+                    {% endif %}
+                </td>
+                <td>
+                    {% if conflicts %}
+                        <ul>
+                            {% for title, time_range in conflicts %}
+                                <li>{{ title }} ({{ time_range }})</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        No conflicts
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

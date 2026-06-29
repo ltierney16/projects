@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" class="theme-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <title>Document</title>
+    <link rel="icon" href="/static/images/icon.png">
+    <style>
+       .navbar-item img {
+           max-height: none !important;
+           height: 150px;
+           width: auto;
+    }
+    </style>
+</head>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column">
+                <div class="has-text-centered" style="margin-bottom: 25px;">
+                    <h1 class="title">Review your responses</h1>
+                </div>
+                <div class="box">
+                    <div class="content">
+                        <h3 class="subtitle">Experience, Goal, and Body Parameters</h3>
+                        <p><strong>Experience:</strong> {{ experience }}</p>
+                        <p><strong>Goals:</strong> {{ goals }}</p>
+                        <p><strong>Frequency:</strong> {{ frequency }}</p>
+                        <p><strong>Preferred Part of the Day:</strong> {{ day_part }}</p>
+                        <p><strong>Weight (kg):</strong> {{ weight }}</p>
+                        <p><strong>Height (m):</strong> {{ height }}</p>
+                        <p><strong>Body Type:</strong> {{ body_type }}</p>
+
+                        <h3 class="subtitle">Weekly Schedule</h3>
+                        <div class="columns">
+                            {% for day, tasks in weekly_schedule %}
+                            <div class="column">
+                                <h4>{{ day }}</h4>
+                                {% if tasks and tasks != "No tasks scheduled" %}
+                                <ul style="list-style-type: none; margin: 0">
+                                    {% for task, time in tasks %}
+                                    <li>
+                                        {{ task }}
+                                        <br>
+                                        <span>{{ time }}</span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p>No tasks scheduled</p>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+        <!-- Flashed Messages Section -->
+                <div class="mt-4">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="notification is-info">
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+        </div>
+
+        <div class="buttons is-centered mt-4">
+            <a class="button is-info" href="{{ url_for('experience_goals') }}">
+                <span class="icon"><i class="fas fa-arrow-left"></i></span>
+                <span>Back to Edit</span>
+            </a>
+        <a class="button is-primary" href="{{ url_for('workout') }}">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span>Go to Home Page</span>
+        </a>
+        </div>
+        </div>
+    </div>
+    </div>
+
+</section>
+</html>

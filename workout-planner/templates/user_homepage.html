@@ -1,0 +1,53 @@
+{% extends "layout_main.html" %}
+{% block body %}
+
+<!-- Weekly workout schedule from M-F-->
+<section class="section">
+    <div class="container">
+        <h2 class="title has-text-centered">Your Weekly Workout Schedule</h2>
+        <table class="table is-fullwidth is-striped is-bordered">
+
+            <!-- Columns for each day to include what workout you did for that day and extra notes-->
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Workouts</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for day in days %}
+                <tr{% if day == today %} class="is-selected"{% endif %}>
+                    <td>
+                        {{ day }}
+                        {% if day == today %}
+                        <form action="/current-workout" method="GET" style="display: inline;">
+                            <button class="button is-danger has-text-white is-small ml-2">Workout</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if day_info and day in day_info %}
+                            {{ day_info[day]['summary'] }}
+                        {% else %}
+                            TBD
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if day_info and day in day_info %}
+                            <form action="/save_notes" method="POST">
+                                <input type="hidden" name="day" value="{{ day }}">
+                                <textarea class="textarea is-small" name="notes" rows="2">{{ day_info[day]['notes'] }}</textarea>
+                                <button type="submit" class="button is-link is-small mt-1">Save Notes</button>
+                            </form>
+                        {% else %}
+                            TBD
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

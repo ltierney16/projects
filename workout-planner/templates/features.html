@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<section class="section">
+    <div class="container">
+        <div class="has-text-centered mb-6">
+            <h1 class="title">Workout Planner Features</h1>
+            <h2 class="subtitle">Enhance your fitness journey with our unique features!</h2>
+        </div>
+        <div class="columns is-multiline">
+            <div class="column is-one-third">
+                <div class="box">
+                    <h3 class="title is-4">Custom Workout Plans</h3>
+                    <p>Create personalized workout plans based on your fitness goals, whether it is building muscle, losing weight or improving endurance</p><br>
+                    <figure class="image is-4by3">
+                        <img src="{{ url_for('static', filename='images/Custom_Workout_Plans.jpg') }}" alt="Feature 1">
+                    </figure>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="box">
+                    <h3 class="title is-4">Progress Tracking</h3>
+                    <p>Track your workouts and monitor your progress over time with detailed information. Stay motivated by watching your evolution over time.</p><br>
+                    <figure class="image is-4by3">
+                        <img src="{{ url_for('static', filename='images/Progress_Tracking.jpg') }}" alt="Feature 2">
+                    </figure>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="box">
+                    <h3 class="title is-4">Video tutorials</h3>
+                    <p>Watch easy-to-follow exercise videos to master your technique and get the best results. Avoid common mistakes to make every workout count.</p><br>
+                    <figure class="image is-4by3">
+                        <img src="{{ url_for('static', filename='images/Videos_Tutorials.jpg') }}" alt="Feature 3">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

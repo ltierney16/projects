@@ -1,0 +1,105 @@
+{% extends "layout_form_profile.html" %}
+{% block body %}
+
+<section class="section">
+   <div class="container">
+       <h1 class="title is-4 has-text-centered"> Enter Your Experience and Your Goals</h1>
+       <div class="has-text-centered mb-4">
+           <form id="experienceForm" action="/experience_and_goals_submit" method="POST">
+               <div class="field">
+                   <div class="columns is-centered">
+                       <div class="column is-half">
+                          <div class="box">
+                              <h2 class="subtitle">What is your experience working out?</h2>
+                              <div class="field">
+                                  <div class="control">
+                                      <div class="select is-fullwidth">
+                                          <select name="experience" required>
+                                              <option value="">Select Experience</option>
+                                              <option value="highly_experienced">Highly Experienced</option>
+                                              <option value="some_experience">Some Experience</option>
+                                              <option value="not_experienced">Not Experienced</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                              <h2 class="subtitle">What are your goals working out?</h2>
+                              <div class="field">
+                                  <div class="control">
+                                      <div class="select is-fullwidth">
+                                          <select name="goals" required>
+                                              <option value="">Select Goals</option>
+                                              <option value="gain_muscle">Gain Muscle/Bulk</option>
+                                              <option value="gain_weight">Gain Weight</option>
+                                              <option value="lose_weight">Lose Weight</option>
+                                              <option value="lose_weight_gain_muscle">Lose Weight and Gain Muscle</option>
+                                              <option value="recovery">Recovery</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                              <h2 class="subtitle">How many times would you like to work out in a week?</h2>
+                              <div class="field">
+                                  <div class="control">
+                                      <div class="select is-fullwidth">
+                                          <select name="frequency" required>
+                                              <option value="">Select frequency</option>
+                                              <option value="1">1</option>
+                                              <option value="2">2</option>
+                                              <option value="3">3</option>
+                                              <option value="4">4</option>
+                                              <option value="5">5</option>
+                                              <option value="6">6</option>
+                                              <option value="7">7</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                              <h2 class="subtitle">What part of the day do you think working out would be best for you?</h2>
+                              <div class="field">
+                                  <div class="control">
+                                      <div class="select is-fullwidth">
+                                          <select name="day_part" required>
+                                              <option value="">Select part of the day</option>
+                                              <option value="1">First part (Morning-Afternoon)</option>
+                                              <option value="2">Second part (Afternoon-Evening)</option>
+                                              <option value="3">Any part of the day</option>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                       </div>
+                   </div>
+               </div>
+           </form>
+
+           <!-- Flashed Messages Section -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes mt-3">
+            {% for message in messages %}
+                    <li>{{ message }}</li>
+            {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+       </div>
+       <div class="columns is-centered">
+           <div class="column is-3">
+                <form action="/logout"><input type="submit" class="button has-background-danger" value="Log Out"></form>
+           </div>
+           <div class="column is-3">
+               <form action="/init_schedule" class="field has-text-right is-size-1" method="POST">
+                   <button type="submit" form="experienceForm">
+                       <span class="icon">
+                           <i class="fas fa-long-arrow-right"></i>
+                       </span>
+                   </button>
+               </form>
+           </div>
+       </div>
+   </div>
+</section>
+
+{% endblock %}

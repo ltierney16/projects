@@ -1,0 +1,114 @@
+{% extends "layout_form_profile.html" %}
+{% block body %}
+
+<div class="container" style="width: 700px">
+    <h1 class="title has-text-centered">Submit Your Weekly Schedule</h1>
+
+    <form action="/init_schedule_submit" method="POST" class="box">
+        <input type="hidden" name="username" value="current_username">
+        <div class="field">
+            <label class="label">Day:</label>
+            <div class="checkboxes">
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Monday"/>
+                Monday
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Tuesday"/>
+                Tuesday
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Wednesday"/>
+                Wednesday
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Thursday"/>
+                Thursday
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Friday"/>
+                Friday
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Saturday"/>
+                Saturday
+              </label>
+
+              <label class="checkbox">
+                <input type="checkbox" name="day" value="Sunday"/>
+                Sunday
+              </label>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Start Time:</label>
+            <div class="control">
+                <input type="time" name="start_time" class="input" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">End Time:</label>
+            <div class="control">
+                <input type="time" name="end_time" class="input" required>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label" for="task">Task Title:</label>
+            <div class="control">
+                <input type="text" id="task" name="task" class="input" required>
+            </div>
+        </div>
+        <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+                <button type="submit" class="button is-danger has-text-white">Add Task</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="columns">
+      <div class="column">
+        <form action="/experience_and_goals" class="field has-text-left is-size-1" method="POST">
+            <button type="submit">
+                <span class="icon">
+                    <i class="fas fa-long-arrow-left"></i>
+                </span>
+            </button>
+        </form>
+      </div>
+      <div class="column">
+        <form action="/body_parameters" class="field has-text-right is-size-1" method="POST">
+            <button type="submit">
+                <span class="icon">
+                    <i class="fas fa-long-arrow-right"></i>
+                </span>
+            </button>
+        </form>
+      </div>
+    </div>
+
+    <form action="/logout"><input type="submit" class="button has-background-danger" value="Log Out"></form>
+
+
+</div>
+
+<div class="columns mt-5">
+    {% for day in days %}
+    <div class="column has-text-centered">
+        <h1>{{ day[0] }}</h1>
+        {% if day[1] %}
+            {% for task in day[1] %}
+            <h2>{{ task[1] }}</h2>
+            <h3>{{ task[0] }}</h3>
+            {% endfor %}
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

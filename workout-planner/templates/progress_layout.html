@@ -1,0 +1,85 @@
+{% extends "layout_main.html" %}
+{% block body %}
+
+<section class="section">
+    <div class="container">
+      <div class="columns">
+       <div class="column">
+        <h1 class="title has-text-centered">Workout Progress Tracker</h1>
+
+        <form method="GET" action="/progress">
+            <div class="select mb-6">
+                <select name="workout">
+                    <option value=""> {{ "select" if selected_workout == "" else "" }} workout</option>
+                    <option value="legs"> {{ "select" if selected_workout == "legs" else "" }} Legs</option>
+                    <option value="arm"> {{ "select" if selected_workout == "arm" else "" }} Arm</option>
+                    <option value="abs"> {{ "select" if selected_workout == "abs" else "" }} Abs</option>
+                    <option value="chest"> {{ "select" if selected_workout == "chest" else "" }} Chest</option>
+                    <option value="shoulder"> {{ "select" if selected_workout == "shoulder" else "" }} Shoulder</option>
+                    <option value="back"> {{ "select" if selected_workout == "back" else "" }} Back</option>
+                </select>
+            </div>
+            <button type="submit" class="button is-danger has-text-white">Show Exercise</button>
+        </form>
+
+        {% if selected_workout == "" %}
+                <div class="box">
+                    <h2 class="subtitle">Past Workouts</h2>
+                    <p>Select a workout to see exercises and their visualizations.</p>
+                </div>
+                {% else %}
+                <div class="box">
+                    <h2 class="subtitle">{{ selected_workout | capitalize }}</h2>
+
+                    <h3 class="subtitle mt-4">Exercises for {{ selected_workout | capitalize }}</h3>
+                    {% if exercises %}
+                        <ul>
+                            {% for exercise in exercises %}
+                                <li>
+                                    <strong>{{ exercise['workout_name'] }}</strong>
+                                    <ul>
+                                        <li><strong>Weight:</strong>
+                                            {% if exercise['user_weight_kg'] %}
+                                                {{ exercise['user_weight_kg'] }} kg
+                                            {% else %}
+                                                Not specified
+                                            {% endif %}
+                                        </li>
+                                        <li><strong>Time:</strong> {{ "Yes" if exercise['time_minutes'] else "No" }}</li>
+                                    </ul>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No exercises found for {{ selected_workout | capitalize }}.</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                </div>
+
+
+        <div class="column">
+          {% if selected_workout == "" %}
+                    <p></p>
+
+                {% else %}
+       <div class="column is-mobile">
+        <div class="column is-auto">
+        <h1>User Progress for {{ selected_workout }}</h1>
+        {% for plot in plots %}
+            {% if selected_workout == "all" or plot.split('/')[-1].split('_')[0] == selected_workout %}
+                <div>
+                    <img src="{{ url_for('static', filename=plot.split('static/')[1]) }}" alt="Progress plot for {{ selected_workout }}">
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+       </div>
+       </div>
+      </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}
+

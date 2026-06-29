@@ -1,0 +1,86 @@
+{% extends "layout_main.html" %}
+{% block body %}
+
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+  >
+<form action="/submit_change" method="post">
+    <div class="container is-max-tablet">
+  <div class="notification is-danger">
+<dl>
+     <dt class="title is-5">Profile Settings:
+
+    <dt> <b>Username</b>:
+      <dd><input class="input" type="text" size="30" value="{{ cur_user.username }}" name="username">
+    <dt> <b>Email</b>:
+        <dd> <input class="input" type="text" size="30" value="{{cur_user.email}}" name="email">
+    <dd> <b>Enter Your Experience:</b>
+       <div class="has-text mb-4">
+
+           <div class="field">
+               <div class="columns">
+                   <div class="column is-half">
+                      <div class="box">
+                          <h2 class="subtitle">What is your experience working out?</h2>
+                          <div class="field">
+                              <div class="control">
+                                  <div class="select">
+                                      <select name="experience" required>
+                                          <option value="">Select Experience</option>
+                                          <option value="highly_experienced">Highly Experienced</option>
+                                          <option value="some_experience">Some Experience</option>
+                                          <option value="not_experienced">Not Experienced</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+</dd>
+    <dd><b>Enter Your Goals:</b>
+       <div class="has-text">
+
+           <div class="field">
+               <div class="columns">
+                   <div class="column is-half">
+                      <div class="box">
+                          <h2 class="subtitle">What are your goals working out?</h2>
+                          <div class="field">
+                              <div class="control">
+                                  <div class="select is-fullwidth">
+                                      <select name="goals" required>
+                                          <option value="">Select Goals</option>
+                                          <option value="gain_muscle">Gain Muscle/Bulk</option>
+                                          <option value="gain_weight">Gain Weight</option>
+                                          <option value="lose_weight">Lose Weight</option>
+                                          <option value="lose_weight_gain_muscle">Lose Weight and Gain Muscle</option>
+                                          <option value="recovery">Recovery</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+</dd>
+    <dt>
+        <dd>  <div class="field">
+    <label class="label"><b>Body Type</b></label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="body_type" required>
+                                <option value="">Select Body Type</option>
+                                <option value="ectomorph">Ectomorph</option>
+                                <option value="mesomorph">Mesomorph</option>
+                                <option value="endomorph">Endomorph</option>
+                            </select>
+                        </div>
+                    </div>
+                </div></dd>
+    <dt> Weight:
+        <dd><input class="input" type="text" value = "{{cur_user.weight}}" name="weight"> </dd>
+    <dt> Height:
+        <dd> <input class="input" type="text" value = "{{cur_user.height}}" name="height"> </dd>
+    <dd><input class="button has-warning" type="submit"  value="Redo Profile Information">
+</dl>
+  </div>
+    </div>
+    </form>
+
+{% endblock %}

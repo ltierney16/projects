@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<section class="section">
+
+    <!-- banner image for website homepage, path is from internal files -->
+    <div class="container" style="position: relative; background-image: url('{{ url_for('static', filename='images/homepage.jpg') }}'); background-size: cover; background-position: top; padding: 50px; color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); height: 70vh; border-radius: 15px;">
+
+        <!-- General Info and Overlay Text -->
+        <div style="position: relative; z-index: 1;">
+            <h1 class="title has-text-centered">Welcome to the Workouts Planner</h1>
+            <h1 class="title has-text-centered" style="font-size: 1rem;">
+                Achieve your fitness goals with ease! With the Workouts Planner you can track your workouts,
+                stay consistent, and reach new heights in your fitness journey. Regardless of if you are
+                beginner or an advanced athlete, this tool is here to keep you motivated and on track.
+            </h1>
+            <h1 class="title has-text-centered" style="font-size: 1rem;">
+                By planning your workouts in advance, you can create a simple routine, monitor progress,
+                and push yourself towards your goals. Join us and start your fitness journey!
+            </h1>
+        </div>
+
+        <!-- Optional overlay for better readability -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 0;"></div>
+    </div>
+
+    <!-- Benefits List and Sign Up Button as a Separate Section -->
+    <div class="container content has-text-centered" style="margin-top: 20px;">
+        <h2 class="title">Why Use the Workout Planner?</h2>
+        <ul style="list-style-type: disc; text-align: left; display: inline-block;">
+            <li>Simple to use</li>
+            <li>Personalized workout recommendations</li>
+            <li>Consistent progress tracking</li>
+            <li>Video tutorials for exercises</li>
+            <li>Google calender integration</li>
+        </ul>
+        <div class="has-text-centered" style="margin-top: 20px;">
+            <a class="button is-large is-danger has-text-white" href="/signup">Sign Up</a>
+        </div>
+
+        <!-- Example workout video-->
+        <section class="video-preview mt-3">
+           <h2>Featured Workout</h2>
+           <video controls width="640" height="360">
+               <source src="static/videos/chest/flat_barbell_bench.webm" type="video/webm">
+               Your browser does not support the video tag.
+           </video>
+        </section>
+    </div>
+
+
+    </div>
+</section>
+
+{% endblock %}

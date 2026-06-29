@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <section class="section">
+        <div class="level-item has-text-centered">
+            <h1 class="title is-1">About Us</h1>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container is-half">
+            <div class="box">
+                <h2 class="title is-3"> Our Mission</h2>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-third">
+                        <figure class="image is-150x150">
+                            <img src="{{ url_for('static', filename='images/istockphoto-639324148-1024x1024.jpg') }}" alt="Image 1">
+                        </figure>
+                    </div>
+                    <div class="column is-vcentered">
+                        <p>
+                            At Workout Planner, we aim to empower individuals to achieve their fitness goals through tailored workout plans and expert guidance. Our mission is to make fitness accessible and enjoyable for everyone, regardless of their experience level. Founded by a group of fitness enthusiasts, Workout Planner was born out of a desire to create a platform where people can find the motivation and resources they need to stay active and healthy.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h2 class="title is-3"> Project Goals</h2>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-third">
+                        <figure class="image is-150x150">
+                            <img src="{{url_for('static', filename='images/pexels-polina-zimmerman-3782235.jpg') }}" alt="Image 2">
+                        </figure>
+                    </div>
+
+                    <ul class="container">
+                        <li>
+                            We want to make the platform as easy as it can be to navigate for our user's.
+                        </li>
+                        <li>
+                            We want to help user's stay on track with their fitness goals through reminders and tracking progress.
+                        </li>
+                        <li>
+                            We want to encourage our user's to take charge of their fitness journeys and help guide them to their goals.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h2 class="title is-3"> Values</h2>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-third">
+                        <figure class="image is-150x150">
+                            <img src="{{url_for('static', filename='images/pexels-polina-kovaleva-6185396.jpg') }}" alt="Image 3">
+                        </figure>
+                    </div>
+                    <div class="column is-half">
+                        <li>
+                            We value our user's in everything we do, and try to provide a well-balanced workout plan for them.
+                        </li>
+                        <li>
+                            We value our user's time. The time they have to schedule and plan their workouts can be spent doing more important things because of us.
+                        </li>
+                        <li >
+                            We value user's of all fitness levels, beginners, athletes, or experienced user's.
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <h2 class="title is-3"> Meet the Team</h2>
+                <div class="columns is-vcentered">
+                    <div class="column is-one-third">
+                        <figure class="image is-150x150">
+                            <img src="{{url_for('static', filename='images/pexels-fauxels-3184418.jpg') }}" alt="Image 4">
+                        </figure>
+                    </div>
+                <p>
+                    Our team includes Karsten, Jimmy, Otabek, Logan, and Jacob. Each of us brings unique skills and experiences to the table, from fitness training to software development, ensuring that Workout Planner is as effective and user-friendly as possible.
+                </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

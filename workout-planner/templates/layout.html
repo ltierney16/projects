@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" class="theme-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Workouts Planner</title>
+    <link rel="stylesheet" href="../static/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="icon" href="/static/images/icon.png">
+    <style>
+       .navbar-item img {
+           max-height: none !important;
+           height: 150px;
+           width: auto;
+    }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="navbar-brand container" style="justify-content: space-between">
+                <li class="navbar-item has-text-white">
+                    <a href="/logo_button2">
+                    <img src="/static/images/website_logo.png" alt="Logo" style="height: 150px; width: auto;">
+                    </a>
+                </li>
+                <li class="navbar-item has-text-white">
+                    <form action="/">
+                        <input class="button is-text " type="submit" value="Home Page">
+                    </form>
+                </li>
+                <li class="navbar-item has-text-white">
+                    <form action="/about_us">
+                        <input class="button is-text " type="submit" value="About Us">
+                    </form>
+                </li>
+                <li class="navbar-item has-text-white">
+                    <form action="/features">
+                        <input class="button is-text " type="submit" value="Features">
+                    </form>
+                </li>
+                <li class="navbar-item has-text-white">
+                    <div>
+                        <form action="/signup"><input class="button is-danger has-text-white"  type="submit" value="Sign Up"></form>
+                    </div>
+                    <div>
+                        <form action="/login"><input type="submit" class="button is-danger is-light" value="Log in"></form>
+                    </div>
+
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+    
+    {#
+    <div class="container is-max-tablet mb-5">
+
+    {% for message in get_flashed_messages() %}
+    <div class="notification is-danger">
+        {{ message }}
+    </div>
+    {% endfor %}
+    </div>
+    #}
+
+    {% block body %}
+    {% endblock %}
+
+    <footer class="footer py-5">
+        <div class="columns">
+             <div class="column">
+                <p>2024 Workout Planner. All rights reserved.</p>
+                <p>Terms of Service | Privacy Policy</p>
+                <p>
+                  <strong>Workout Planner</strong> by Karsten, Jimmy, Otabek, Logan, and Jacob
+                </p>
+                <p><strong>© Copyright 2024</strong></p>
+            </div>
+
+             <div class="column is-offset-5">
+                Our social networks
+                <div class="breadcrumb">
+                    <ul>
+                        <li>
+                            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                                <span class="icon is-large">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                                <span class="icon is-large">
+                                    <i class="fab fa-facebook-square fa-lg"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.github.com" target="_blank" aria-label="GitHub">
+                                <span class="icon is-large">
+                                    <i class="fab fa-github fa-lg"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com" target="_blank" aria-label="LinkedIn">
+                                <span class="icon is-large">
+                                    <i class="fab fa-linkedin fa-lg"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>

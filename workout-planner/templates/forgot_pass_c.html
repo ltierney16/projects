@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+  >
+
+<form action="{{ url_for('fp_done') }}" method ="post" class="fp_done">
+    <div class="container is-max-tablet">
+  <div class="notification is-danger">
+<dl>
+
+      <dt class="title is-5">Password:
+      <dd><input class='input' type="password" size="20" name="password">
+      <dt class="title is-5">Password Confirmation:
+      <dd><input class='input' type="password" size="20" name="password_c">
+      <dd><input type="submit" class="button has-text" value="Change Password">
+        <input type="hidden" name="name" value="{{ user }}">
+</dl>
+  </div>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+
+<div class="container is-max-tablet mb-5">
+    {% for message in get_flashed_messages() %}
+    <div class="notification is-success">
+        <form action="{{ url_for('clear_notification_login') }}" method="post" style="display: inline;">
+            <button class="delete" type="submit"></button>
+        </form>
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+
+<form action="{{ url_for('login_submit') }}" method ="post" class="login_submit">
+<div class="container is-max-tablet">
+  <div class="notification is-danger">
+<dl>
+      <dt class="title is-5">Username:
+      <dd><input class='input' type="text" size="30" name="username">
+      <dt class="title is-5">Password:
+      <dd><input class='input' type="password" size="20" name="password">
+      <dd><input type="submit" class="button has-text" value="Login">
+</dl>
+      </form>
+      <form action="/forgot_password">
+          <input class="button has-text" type="submit" value="Forgot Password">
+      </form>
+  </div>
+</div>
+
+
+{% endblock %}
